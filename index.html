@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Plaza Kávia — Comodidad y calidez dominicana</title>
+  <meta name="description" content="Hotel Plaza Kávia: un hotel acogedor en el corazón de la ciudad. Habitaciones cómodas, restaurante, desayuno dominicano, parqueo privado y atención cercana." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hotel Plaza Kávia" />
+  <meta property="og:description" content="Comodidad y calidez dominicana en el corazón de la ciudad." />
+  <meta property="og:image" content="img/fachada2.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="img/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="brand" aria-label="Hotel Plaza Kávia — inicio">
+        <span class="logo-badge logo-badge--sm">
+          <img src="img/logo.png" alt="" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Plaza Kávia</span>
+          <span class="brand__sub">Hotel</span>
+        </span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#bienvenida">Nosotros</a>
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#restaurante">Restaurante</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn btn--primary btn--sm nav__cta">Reservar</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg" style="background-image:url('img/fachada2.jpg')"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="logo-badge logo-badge--lg reveal">
+        <img src="img/logo.png" alt="Logo Hotel Plaza Kávia" />
+      </span>
+      <p class="hero__eyebrow reveal" data-delay="1">Bienvenido</p>
+      <h1 class="hero__title reveal" data-delay="2">Hotel Plaza Kávia</h1>
+      <p class="hero__sub reveal" data-delay="3">
+        Comodidad y calidez dominicana en el corazón de la ciudad.
+      </p>
+      <div class="hero__actions reveal" data-delay="4">
+        <a href="#contacto" class="btn btn--primary">Reservar ahora</a>
+        <a href="#habitaciones" class="btn btn--ghost">Ver habitaciones</a>
+      </div>
+    </div>
+
+    <a href="#bienvenida" class="hero__scroll" aria-label="Bajar">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===================== BIENVENIDA ===================== -->
+  <section class="welcome section" id="bienvenida">
+    <div class="welcome__grid">
+      <div class="welcome__media reveal">
+        <img src="img/fachada.jpg" alt="Fachada del Hotel Plaza Kávia" loading="lazy" />
+        <span class="logo-badge logo-badge--float">
+          <img src="img/logo.png" alt="" />
+        </span>
+      </div>
+
+      <div class="welcome__text reveal" data-delay="2">
+        <p class="eyebrow">Nuestra esencia</p>
+        <h2 class="title">Un refugio acogedor para tu estancia</h2>
+        <p>
+          En <strong>Hotel Plaza Kávia</strong> combinamos la calidez de la hospitalidad
+          dominicana con espacios cómodos y bien cuidados. Ya sea que viajes por
+          negocios o por placer, encontrarás un ambiente tranquilo, atención cercana
+          y todo lo que necesitas para sentirte como en casa.
+        </p>
+        <p>
+          Una casa de aire colonial con balcones, jardines y un restaurante luminoso,
+          a pocos pasos de todo lo que la ciudad tiene para ofrecer.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__num">24/7</span>
+            <span class="stat__label">Recepción</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">3</span>
+            <span class="stat__label">Tipos de habitación</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">100%</span>
+            <span class="stat__label">Hospitalidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICIOS ===================== -->
+  <section class="amenities section section--cream">
+    <div class="section__head reveal">
+      <p class="eyebrow">Servicios</p>
+      <h2 class="title">Todo lo que necesitas</h2>
+      <p class="section__lead">Pensado para que tu única preocupación sea descansar.</p>
+    </div>
+
+    <div class="amenities__grid">
+      <div class="amenity reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 18.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm0-4.7c-1.6 0-3 .6-4.1 1.6l1.6 1.6c.7-.6 1.6-1 2.5-1s1.8.4 2.5 1l1.6-1.6A6 6 0 0 0 12 13.8Zm0-4.6a10 10 0 0 0-7 2.9l1.6 1.6A7.7 7.7 0 0 1 12 11.5c2 0 3.9.8 5.4 2.2l1.6-1.6a10 10 0 0 0-7-2.9Zm0-4.6A14.6 14.6 0 0 0 1.6 8.4L3.2 10A12.3 12.3 0 0 1 12 6.4 12.3 12.3 0 0 1 20.8 10l1.6-1.6A14.6 14.6 0 0 0 12 4Z"/></svg>
+        <h3>WiFi gratis</h3>
+        <p>Internet de alta velocidad en todo el hotel.</p>
+      </div>
+      <div class="amenity reveal" data-delay="1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11h.5A1.5 1.5 0 0 1 21 12.5V18a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5.5A1.5 1.5 0 0 1 4.5 11H5Zm2.1-.5h9.8l-1-3a.5.5 0 0 0-.5-.4H8.6a.5.5 0 0 0-.5.4l-1 3ZM6.5 13.5a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Zm11 0a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/></svg>
+        <h3>Parqueo privado</h3>
+        <p>Estacionamiento seguro dentro de la propiedad.</p>
+      </div>
+      <div class="amenity reveal" data-delay="2">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h1.4l.5 8.2a2 2 0 0 1-2 2.1V21H2.6V3H4Zm4.8 0c.3 0 .5.2.5.5v4a2.6 2.6 0 0 1-2 2.5V21H5.9v-11A2.6 2.6 0 0 1 4 7.5v-4a.5.5 0 0 1 1 0V8h.8V3.5a.5.5 0 0 1 1 0V8h.8V3.5c0-.3.2-.5.5-.5Zm9.4 0c1.6 0 2.6 2.3 2.6 5.2 0 2.4-.7 4.3-1.9 4.9V21h-1.6v-8C16 12.4 15.2 10.8 15.2 8 15.2 5.2 16.6 3 18.2 3Z"/></svg>
+        <h3>Restaurante</h3>
+        <p>Cocina casera y un desayuno dominicano completo.</p>
+      </div>
+      <div class="amenity reveal" data-delay="3">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v7a1.5 1.5 0 0 1-1.5 1.5H13v2h2.5a1 1 0 1 1 0 2h-7a1 1 0 1 1 0-2H11v-2H4.5A1.5 1.5 0 0 1 3 13.5v-7ZM5 7v6h14V7H5Z"/></svg>
+        <h3>Aire acondicionado</h3>
+        <p>Habitaciones climatizadas y TV por cable.</p>
+      </div>
+      <div class="amenity reveal" data-delay="4">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v3.6c0 .5-.2 1-.6 1.4l-1 .9A3 3 0 0 0 4.4 18H9a3 3 0 0 0 6 0h4.6a3 3 0 0 0-1-5.1l-1-.9a2 2 0 0 1-.6-1.4V7a5 5 0 0 0-5-5Zm0 19a1.5 1.5 0 0 1-1.4-1h2.8A1.5 1.5 0 0 1 12 21Z"/></svg>
+        <h3>Recepción 24/7</h3>
+        <p>Personal disponible a cualquier hora del día.</p>
+      </div>
+      <div class="amenity reveal" data-delay="5">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2S5 9 5 14a7 7 0 0 0 14 0c0-5-7-11.8-7-11.8Zm0 16.6a4.8 4.8 0 0 1-4.8-4.8c0-.4.3-.7.7-.7s.7.3.7.7A3.4 3.4 0 0 0 12 17.4c.4 0 .7.3.7.7s-.3.7-.7.7Z"/></svg>
+        <h3>Agua caliente</h3>
+        <p>Baños privados con agua caliente todo el día.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HABITACIONES ===================== -->
+  <section class="rooms section" id="habitaciones">
+    <div class="section__head reveal">
+      <p class="eyebrow">Habitaciones</p>
+      <h2 class="title">Descansa a tu manera</h2>
+      <p class="section__lead">
+        Espacios limpios y confortables para cada tipo de viajero.
+      </p>
+    </div>
+
+    <div class="rooms__grid">
+      <article class="room reveal">
+        <div class="room__media">
+          <img src="img/sencilla.jpg" alt="Habitación sencilla" loading="lazy" />
+          <span class="room__tag">1 huésped</span>
+        </div>
+        <div class="room__body">
+          <h3 class="room__name">Habitación Sencilla</h3>
+          <p class="room__desc">
+            Ideal para el viajero individual. Cama cómoda, baño privado y todo lo
+            esencial para una estancia tranquila.
+          </p>
+          <ul class="room__feats">
+            <li>1 cama</li><li>Aire acondicionado</li><li>WiFi</li><li>TV cable</li>
+          </ul>
+          <div class="room__foot">
+            <span class="room__price"><small>Desde</small> RD$ 1,800 <em>/ noche</em></span>
+            <a href="#contacto" class="btn btn--primary btn--sm" data-room="Sencilla">Reservar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal" data-delay="1">
+        <div class="room__media">
+          <img src="img/doble.jpg" alt="Habitación doble" loading="lazy" />
+          <span class="room__tag room__tag--featured">Más popular</span>
+        </div>
+        <div class="room__body">
+          <h3 class="room__name">Habitación Doble</h3>
+          <p class="room__desc">
+            Perfecta para parejas o dos viajeros. Dos camas, amplitud y comodidad
+            para disfrutar tu estadía.
+          </p>
+          <ul class="room__feats">
+            <li>2 camas</li><li>Aire acondicionado</li><li>WiFi</li><li>TV cable</li>
+          </ul>
+          <div class="room__foot">
+            <span class="room__price"><small>Desde</small> RD$ 2,500 <em>/ noche</em></span>
+            <a href="#contacto" class="btn btn--primary btn--sm" data-room="Doble">Reservar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal" data-delay="2">
+        <div class="room__media">
+          <img src="img/triple.jpg" alt="Habitación triple" loading="lazy" />
+          <span class="room__tag">Hasta 3 huéspedes</span>
+        </div>
+        <div class="room__body">
+          <h3 class="room__name">Habitación Triple</h3>
+          <p class="room__desc">
+            Espaciosa y versátil, pensada para familias o grupos de amigos que
+            viajan juntos.
+          </p>
+          <ul class="room__feats">
+            <li>3 camas</li><li>Aire acondicionado</li><li>WiFi</li><li>TV cable</li>
+          </ul>
+          <div class="room__foot">
+            <span class="room__price"><small>Desde</small> RD$ 3,200 <em>/ noche</em></span>
+            <a href="#contacto" class="btn btn--primary btn--sm" data-room="Triple">Reservar</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== RESTAURANTE ===================== -->
+  <section class="dining section section--cream" id="restaurante">
+    <div class="dining__grid">
+      <div class="dining__text reveal">
+        <p class="eyebrow">Gastronomía</p>
+        <h2 class="title">Sabores que te hacen sentir en casa</h2>
+        <p>
+          Nuestro restaurante abre cada mañana con un <strong>desayuno dominicano</strong>
+          completo: mangú, huevos, queso frito, jugo natural y café recién colado.
+          Un comienzo perfecto para tu día.
+        </p>
+        <p>
+          A lo largo del día, un espacio luminoso y fresco —entre ladrillo, madera y
+          vegetación— donde compartir una buena comida con vista a la ciudad.
+        </p>
+        <ul class="dining__list">
+          <li>Desayuno dominicano incluido</li>
+          <li>Ambiente fresco y luminoso</li>
+          <li>Atención cálida y cercana</li>
+        </ul>
+      </div>
+
+      <div class="dining__gallery reveal" data-delay="2">
+        <figure class="dining__big">
+          <img src="img/comedor.jpg" alt="Comedor del hotel con mesas servidas" loading="lazy" />
+        </figure>
+        <figure>
+          <img src="img/desayuno.jpg" alt="Desayuno dominicano" loading="lazy" />
+        </figure>
+        <figure>
+          <img src="img/comedor2.jpg" alt="Salón del restaurante" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALERÍA ===================== -->
+  <section class="gallery section" id="galeria">
+    <div class="section__head reveal">
+      <p class="eyebrow">Galería</p>
+      <h2 class="title">Conoce el hotel</h2>
+      <p class="section__lead">Un vistazo a los espacios que te esperan.</p>
+    </div>
+
+    <div class="gallery__grid" id="galleryGrid">
+      <button class="gallery__item gallery__item--wide reveal" data-src="img/fachada2.jpg" aria-label="Ampliar imagen">
+        <img src="img/fachada2.jpg" alt="Fachada del hotel" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-delay="1" data-src="img/comedor.jpg" aria-label="Ampliar imagen">
+        <img src="img/comedor.jpg" alt="Comedor" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-delay="2" data-src="img/doble.jpg" aria-label="Ampliar imagen">
+        <img src="img/doble.jpg" alt="Habitación doble" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-src="img/desayuno.jpg" aria-label="Ampliar imagen">
+        <img src="img/desayuno.jpg" alt="Desayuno dominicano" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-delay="1" data-src="img/sencilla.jpg" aria-label="Ampliar imagen">
+        <img src="img/sencilla.jpg" alt="Habitación sencilla" loading="lazy" />
+      </button>
+      <button class="gallery__item gallery__item--tall reveal" data-delay="2" data-src="img/triple.jpg" aria-label="Ampliar imagen">
+        <img src="img/triple.jpg" alt="Habitación triple" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-src="img/comedor2.jpg" aria-label="Ampliar imagen">
+        <img src="img/comedor2.jpg" alt="Salón del restaurante" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-delay="1" data-src="img/parqueo.jpg" aria-label="Ampliar imagen">
+        <img src="img/parqueo.jpg" alt="Parqueo privado" loading="lazy" />
+      </button>
+      <button class="gallery__item reveal" data-delay="2" data-src="img/fachada.jpg" aria-label="Ampliar imagen">
+        <img src="img/fachada.jpg" alt="Fachada lateral" loading="lazy" />
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section class="contact section section--cream" id="contacto">
+    <div class="section__head reveal">
+      <p class="eyebrow">Reservas</p>
+      <h2 class="title">Reserva tu estancia</h2>
+      <p class="section__lead">
+        Escríbenos y con gusto confirmamos tu disponibilidad.
+      </p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact__info reveal">
+        <ul class="contact__list">
+          <li>
+            <span class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+            </span>
+            <div>
+              <h4>Dirección</h4>
+              <p>Santo Domingo, República Dominicana</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2Z"/></svg>
+            </span>
+            <div>
+              <h4>Teléfono / WhatsApp</h4>
+              <p><a href="tel:+18090000000">+1 (809) 000-0000</a></p>
+            </div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm8 7L4.5 6.5h15L12 11Zm0 2L4 8.2V18h16V8.2L12 13Z"/></svg>
+            </span>
+            <div>
+              <h4>Correo</h4>
+              <p><a href="mailto:reservas@plazakavia.com">reservas@plazakavia.com</a></p>
+            </div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 10.4 4 2.3-.8 1.3L11 13V6h2v6.4Z"/></svg>
+            </span>
+            <div>
+              <h4>Recepción</h4>
+              <p>Abierta las 24 horas</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="contact__map">
+          <iframe
+            title="Ubicación del Hotel Plaza Kávia"
+            src="https://www.google.com/maps?q=Santo+Domingo,+Rep%C3%BAblica+Dominicana&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <form class="contact__form reveal" data-delay="2" id="reservaForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="checkin">Llegada</label>
+            <input type="date" id="checkin" name="checkin" />
+          </div>
+          <div class="field">
+            <label for="checkout">Salida</label>
+            <input type="date" id="checkout" name="checkout" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="tipo">Habitación</label>
+            <select id="tipo" name="tipo">
+              <option value="Sencilla">Sencilla</option>
+              <option value="Doble">Doble</option>
+              <option value="Triple">Triple</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="huespedes">Huéspedes</label>
+            <select id="huespedes" name="huespedes">
+              <option>1</option><option>2</option><option>3</option><option>4+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="¿Algo que debamos saber?"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">
+          Enviar solicitud por WhatsApp
+        </button>
+        <p class="contact__note">Te responderemos lo antes posible para confirmar tu reserva.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo-badge logo-badge--md">
+          <img src="img/logo.png" alt="Hotel Plaza Kávia" />
+        </span>
+        <p class="footer__name">Hotel Plaza Kávia</p>
+        <p class="footer__tag">Comodidad y calidez dominicana.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Enlaces">
+        <h4>Explorar</h4>
+        <a href="#bienvenida">Nosotros</a>
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#restaurante">Restaurante</a>
+        <a href="#galeria">Galería</a>
+      </nav>
+
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <a href="tel:+18090000000">+1 (809) 000-0000</a>
+        <a href="mailto:reservas@plazakavia.com">reservas@plazakavia.com</a>
+        <p>Santo Domingo, R.D.</p>
+        <p>Recepción 24/7</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> Hotel Plaza Kávia. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="#contacto" class="wa-float" id="waFloat" aria-label="Reservar por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4A9.7 9.7 0 0 1 6.2 15 9.8 9.8 0 1 1 16 24.8Zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.8 2 .8 2.7.9 3.7.8.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4Z"/></svg>
+  </a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Imagen ampliada">
+    <button class="lightbox__close" id="lbClose" aria-label="Cerrar">&times;</button>
+    <button class="lightbox__nav lightbox__prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+    <img class="lightbox__img" id="lbImg" src="" alt="" />
+    <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
