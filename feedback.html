@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Gana un Premio! — Hotel Plaza Kávia</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rust:       #A8431F;
+      --rust-deep:  #7E3015;
+      --rust-soft:  #C06A45;
+      --rust-tint:  #F6EBE4;
+      --ink:        #2C2724;
+      --ink-soft:   #5C554F;
+      --cream:      #FBF8F5;
+      --white:      #FFFFFF;
+      --line:       #E9E0D8;
+      --serif:      "Cormorant Garamond", Georgia, serif;
+      --sans:       "Jost", "Helvetica Neue", Arial, sans-serif;
+      --ease:       cubic-bezier(.22,.61,.36,1);
+      --shadow-sm:  0 6px 18px rgba(44,39,36,.08);
+      --shadow-md:  0 18px 50px rgba(44,39,36,.14);
+      --shadow-lg:  0 30px 80px rgba(44,39,36,.22);
+      --radius:     14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- Page wrapper ---- */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    .page[hidden] { display: none; }
+
+    /* ---- Header ---- */
+    .fb-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 2.8rem;
+      text-align: center;
+    }
+    .fb-logo {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 10px;
+      box-shadow: var(--shadow-md);
+      object-fit: contain;
+    }
+    .fb-hotel-name {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .02em;
+    }
+    .fb-hotel-sub {
+      font-size: .7rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-top: 2px;
+    }
+
+    /* ---- Hero text ---- */
+    .fb-hero {
+      text-align: center;
+      max-width: 520px;
+      margin-bottom: 2.8rem;
+    }
+    .fb-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--rust-tint);
+      color: var(--rust);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: .5em 1.2em;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+    .fb-hero h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .fb-hero p {
+      color: var(--ink-soft);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ---- Form card ---- */
+    .fb-card {
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: var(--shadow-md);
+      padding: clamp(1.8rem, 5vw, 2.8rem);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* ---- Fields ---- */
+    .field { margin-bottom: 1.2rem; }
+    .field label {
+      display: block;
+      font-size: .76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: .45rem;
+      font-weight: 500;
+    }
+    .field input {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: .98rem;
+      color: var(--ink);
+      background: var(--cream);
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      padding: .8em 1em;
+      transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--rust);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(168,67,31,.1);
+    }
+    .field input::placeholder { color: #b5ada6; }
+
+    /* ---- Upload area ---- */
+    .upload-label {
+      display: block;
+      font-size: .76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: .45rem;
+      font-weight: 500;
+    }
+    .upload-area {
+      position: relative;
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      background: var(--cream);
+      cursor: pointer;
+      transition: border-color .3s var(--ease), background .3s var(--ease);
+      overflow: hidden;
+      margin-bottom: 1.4rem;
+    }
+    .upload-area:hover, .upload-area.drag-over {
+      border-color: var(--rust);
+      background: var(--rust-tint);
+    }
+    .upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .upload-ui {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      pointer-events: none;
+    }
+    .upload-ui svg {
+      width: 44px; height: 44px;
+      fill: var(--rust-soft);
+      margin-bottom: .9rem;
+    }
+    .upload-ui p {
+      color: var(--ink);
+      font-size: .98rem;
+      line-height: 1.5;
+    }
+    .upload-ui .upload-hint {
+      color: var(--ink-soft);
+      font-size: .82rem;
+      margin-top: .4rem;
+    }
+    .upload-preview {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      display: none;
+      border-radius: 10px;
+    }
+    .upload-preview.visible { display: block; }
+
+    /* ---- Submit button ---- */
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6em;
+      width: 100%;
+      background: var(--rust);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .92rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 1em 2em;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(168,67,31,.32);
+      transition: transform .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .btn-main:hover:not(:disabled) {
+      background: var(--rust-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(168,67,31,.4);
+    }
+    .btn-main:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ---- Wheel page ---- */
+    .wheel-page {
+      max-width: 460px;
+      text-align: center;
+    }
+    .wheel-page h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .6rem;
+    }
+    .wheel-page h2 span { color: var(--rust); }
+    .wheel-page > p {
+      color: var(--ink-soft);
+      margin-bottom: 2.2rem;
+    }
+    .wheel-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .wheel-pointer {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      color: var(--rust);
+      filter: drop-shadow(0 2px 6px rgba(168,67,31,.5));
+      z-index: 2;
+      line-height: 1;
+    }
+    #wheelCanvas {
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+
+    /* ---- Prize overlay ---- */
+    .prize-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,12,8,.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 300;
+    }
+    .prize-overlay[hidden] { display: none; }
+    .prize-box {
+      position: relative;
+      background: var(--white);
+      border-radius: 22px;
+      padding: 3rem 2.4rem 2.4rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .prize-icon { font-size: 4rem; margin-bottom: 1rem; line-height: 1; }
+    .prize-box h2 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .8rem;
+    }
+    .prize-name {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--rust);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .prize-divider {
+      width: 40px; height: 2px;
+      background: var(--rust-tint);
+      margin: 0 auto 1.2rem;
+      border-radius: 2px;
+    }
+    .prize-note {
+      color: var(--ink-soft);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+    }
+    .prize-receipt {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.6rem;
+      font-size: .85rem;
+      color: var(--ink-soft);
+    }
+    .prize-receipt strong { display: block; color: var(--ink); margin-bottom: .2rem; }
+
+    /* ---- Confetti ---- */
+    .confetti-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute;
+      top: -12px;
+      border-radius: 2px;
+      animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall {
+      0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
+      80%  { opacity: .8; }
+      100% { opacity: 0; transform: translateY(500px) rotate(540deg); }
+    }
+
+    /* ---- Steps indicator ---- */
+    .steps {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .step__num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--line);
+      color: var(--ink-soft);
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      font-size: .8rem;
+      transition: background .3s, color .3s;
+    }
+    .step.active .step__num { background: var(--rust); color: #fff; }
+    .step.active { color: var(--ink); }
+    .step-sep { flex: 1; height: 1px; background: var(--line); max-width: 40px; }
+
+    /* ---- Error message ---- */
+    .error-msg {
+      background: #fff1f0;
+      border: 1px solid #ffa39e;
+      color: #cf1322;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-size: .88rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       PASO 1 — FORMULARIO
+       ============================================================ -->
+  <main class="page" id="stepForm">
+    <div class="fb-header">
+      <img src="img/logo.png" alt="Hotel Plaza Kávia" class="fb-logo" />
+      <span class="fb-hotel-name">Hotel Plaza Kávia</span>
+      <span class="fb-hotel-sub">Hotel</span>
+    </div>
+
+    <div class="steps">
+      <div class="step active">
+        <span class="step__num">1</span>
+        <span>Tu reseña</span>
+      </div>
+      <div class="step-sep"></div>
+      <div class="step" id="step2Indicator">
+        <span class="step__num">2</span>
+        <span>Girar la ruleta</span>
+      </div>
+    </div>
+
+    <div class="fb-hero">
+      <div class="fb-hero-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Premio exclusivo para huéspedes
+      </div>
+      <h2>¡Comparte tu reseña y gana un premio!</h2>
+      <p>Sube una foto de tu comentario positivo en Google Maps o redes sociales desde nuestro hotel y gira la ruleta para descubrir tu sorpresa.</p>
+    </div>
+
+    <div class="fb-card">
+      <div class="error-msg" id="errorMsg">Por favor completa todos los campos y sube tu foto.</div>
+
+      <form id="feedbackForm" novalidate>
+        <div class="field">
+          <label for="fbNombre">Nombre completo</label>
+          <input type="text" id="fbNombre" autocomplete="name" placeholder="Tu nombre" />
+        </div>
+        <div class="field">
+          <label for="fbReserva">Número de reserva</label>
+          <input type="text" id="fbReserva" placeholder="Ej: RES-2024-0123" />
+        </div>
+
+        <label class="upload-label">Foto de tu reseña en Google o redes sociales</label>
+        <div class="upload-area" id="uploadArea">
+          <input type="file" id="fbFoto" accept="image/*" aria-label="Subir foto de reseña" />
+          <div class="upload-ui" id="uploadUi">
+            <svg viewBox="0 0 24 24"><path d="M20 5h-2.83l-1.67-2H8.5L6.83 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm-8 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            <p><strong>Toca para subir tu foto</strong></p>
+            <p class="upload-hint">Captura de pantalla de tu comentario en Google o redes sociales · JPG, PNG, HEIC</p>
+          </div>
+          <img id="uploadPreview" class="upload-preview" src="" alt="Vista previa de tu foto" />
+        </div>
+
+        <button type="submit" class="btn-main" id="submitBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Girar la ruleta
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       PASO 2 — RULETA
+       ============================================================ -->
+  <main class="page wheel-page" id="stepWheel" hidden>
+    <div class="fb-header">
+      <img src="img/logo.png" alt="" class="fb-logo" />
+      <span class="fb-hotel-name">Hotel Plaza Kávia</span>
+      <span class="fb-hotel-sub">Hotel</span>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step__num">✓</span>
+        <span>Tu reseña</span>
+      </div>
+      <div class="step-sep"></div>
+      <div class="step active">
+        <span class="step__num">2</span>
+        <span>Girar la ruleta</span>
+      </div>
+    </div>
+
+    <h2>¡Tu premio te espera, <span id="guestName">amigo</span>!</h2>
+    <p>Gira la ruleta y descubre la sorpresa que te hemos preparado.</p>
+
+    <div class="wheel-wrap">
+      <div class="wheel-pointer">▼</div>
+      <canvas id="wheelCanvas" width="340" height="340"></canvas>
+    </div>
+
+    <button class="btn-main" id="spinBtn" style="max-width: 320px;">
+      🎰 &nbsp;Girar la ruleta
+    </button>
+  </main>
+
+  <!-- ============================================================
+       OVERLAY PREMIO
+       ============================================================ -->
+  <div id="prizeOverlay" class="prize-overlay" hidden aria-modal="true" role="dialog" aria-label="Premio">
+    <div class="prize-box">
+      <div class="confetti-wrap" id="confettiWrap"></div>
+      <div class="prize-icon" id="prizeIcon">🎉</div>
+      <h2>¡Felicidades!</h2>
+      <p class="prize-name" id="prizeName"></p>
+      <div class="prize-divider"></div>
+      <p class="prize-note">Presenta esta pantalla en la recepción del hotel para reclamar tu premio. Solo válido para esta estadía.</p>
+      <div class="prize-receipt">
+        <strong id="receiptName"></strong>
+        <span id="receiptReserva"></span>
+      </div>
+      <button class="btn-main" onclick="document.getElementById('prizeOverlay').hidden=true">
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    /* ---- Wheel segments ---- */
+    const segments = [
+      { label: ['Coctel', 'Gratis'],    icon: '🍹', color: '#A8431F', prize: 'Un coctel gratis',                  detail: 'Válido en tu próxima visita al restaurante' },
+      { label: ['30% próxima', 'reserva'], icon: '🎫', color: '#6B2D0D', prize: '30% de descuento',              detail: 'En tu próxima reserva de habitación' },
+      { label: ['50% segundo', 'coctel'],  icon: '🥂', color: '#C06A45', prize: '50% en el 2do coctel',         detail: 'Descuento en el segundo coctel del mismo día' },
+      { label: ['Coctel', 'Gratis'],    icon: '🍹', color: '#8B3A1A', prize: 'Un coctel gratis',                  detail: 'Válido en tu próxima visita al restaurante' },
+      { label: ['30% próxima', 'reserva'], icon: '🎫', color: '#A8431F', prize: '30% de descuento',             detail: 'En tu próxima reserva de habitación' },
+      { label: ['50% segundo', 'coctel'],  icon: '🥂', color: '#6B2D0D', prize: '50% en el 2do coctel',        detail: 'Descuento en el segundo coctel del mismo día' },
+      { label: ['Coctel', 'Gratis'],    icon: '🍹', color: '#C06A45', prize: 'Un coctel gratis',                  detail: 'Válido en tu próxima visita al restaurante' },
+      { label: ['30% próxima', 'reserva'], icon: '🎫', color: '#8B3A1A', prize: '30% de descuento',             detail: 'En tu próxima reserva de habitación' },
+    ];
+    const numSeg = segments.length;
+    const arc    = (2 * Math.PI) / numSeg;
+
+    /* ---- Canvas setup ---- */
+    const canvas = document.getElementById('wheelCanvas');
+    if (!canvas) return;
+    const ctx    = canvas.getContext('2d');
+    const cx     = canvas.width  / 2;
+    const cy     = canvas.height / 2;
+    const radius = cx - 10;
+    let   currentAngle = -Math.PI / 2;
+    let   spinning     = false;
+
+    function drawWheel(angle) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      /* Outer glow ring */
+      const grd = ctx.createRadialGradient(cx, cy, radius - 4, cx, cy, radius + 6);
+      grd.addColorStop(0, 'rgba(168,67,31,.15)');
+      grd.addColorStop(1, 'rgba(168,67,31,0)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius + 6, 0, 2 * Math.PI);
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+      for (let i = 0; i < numSeg; i++) {
+        const start = angle + i * arc;
+        const end   = angle + (i + 1) * arc;
+        const mid   = start + arc / 2;
+
+        /* Segment */
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = segments[i].color;
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,.18)';
+        ctx.lineWidth   = 1.5;
+        ctx.stroke();
+
+        /* Text */
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(mid);
+
+        /* Icon */
+        ctx.font = '17px serif';
+        ctx.textAlign  = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle  = '#fff';
+        ctx.fillText(segments[i].icon, radius - 16, -10);
+
+        /* Label */
+        ctx.font = '500 10.5px "Jost", sans-serif';
+        segments[i].label.forEach((line, li) => {
+          ctx.fillText(line, radius - 16, 6 + li * 13);
+        });
+        ctx.restore();
+      }
+
+      /* Outer border */
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+      ctx.strokeStyle = 'rgba(255,255,255,.25)';
+      ctx.lineWidth   = 2;
+      ctx.stroke();
+
+      /* Center hub */
+      ctx.beginPath();
+      ctx.arc(cx, cy, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+      ctx.strokeStyle = '#A8431F';
+      ctx.lineWidth   = 3;
+      ctx.stroke();
+
+      /* Center label */
+      ctx.fillStyle = '#A8431F';
+      ctx.font = 'bold 8px "Jost", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('KÁVIA', cx, cy);
+    }
+
+    drawWheel(currentAngle);
+
+    /* ---- Spin logic ---- */
+    document.getElementById('spinBtn').addEventListener('click', function () {
+      if (spinning) return;
+      spinning    = true;
+      this.disabled = true;
+      this.textContent = 'Girando…';
+
+      const winner = Math.floor(Math.random() * numSeg);
+
+      /* Target: middle of winner segment at pointer (top = -π/2) */
+      const targetAngle   = -Math.PI / 2 - (winner + 0.5) * arc;
+      const extraRotations = 6;
+      const M = Math.ceil((currentAngle - targetAngle) / (2 * Math.PI)) + extraRotations;
+      const finalAngle    = targetAngle + M * 2 * Math.PI;
+      const startAngle    = currentAngle;
+      const delta         = finalAngle - startAngle;
+      const duration      = 5800;
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+
+      let start = null;
+      function frame(ts) {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        currentAngle = startAngle + delta * easeOut(p);
+        drawWheel(currentAngle);
+
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          /* Show prize */
+          const seg = segments[winner];
+          document.getElementById('prizeName').textContent      = seg.prize;
+          document.getElementById('prizeIcon').textContent      = seg.icon;
+          document.getElementById('receiptName').textContent    = 'Huésped: ' + (sessionStorage.getItem('fbNombre') || '');
+          document.getElementById('receiptReserva').textContent = 'Reserva: ' + (sessionStorage.getItem('fbReserva') || '');
+
+          const overlay = document.getElementById('prizeOverlay');
+          overlay.hidden = false;
+          createConfetti();
+        }
+      }
+      requestAnimationFrame(frame);
+    });
+
+    /* ---- Form submit ---- */
+    const form      = document.getElementById('feedbackForm');
+    const errorMsg  = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nombre  = document.getElementById('fbNombre').value.trim();
+      const reserva = document.getElementById('fbReserva').value.trim();
+      const foto    = document.getElementById('fbFoto').files[0];
+
+      if (!nombre || !reserva || !foto) {
+        errorMsg.classList.add('show');
+        return;
+      }
+      errorMsg.classList.remove('show');
+
+      /* Store for prize receipt */
+      sessionStorage.setItem('fbNombre',  nombre);
+      sessionStorage.setItem('fbReserva', reserva);
+
+      /* Show guest name in wheel page */
+      document.getElementById('guestName').textContent = nombre.split(' ')[0];
+
+      /* Switch pages */
+      document.getElementById('stepForm').hidden  = true;
+      document.getElementById('stepWheel').hidden = false;
+      window.scrollTo({ top: 0 });
+    });
+
+    /* ---- Photo upload preview ---- */
+    const fileInput   = document.getElementById('fbFoto');
+    const uploadArea  = document.getElementById('uploadArea');
+    const uploadUi    = document.getElementById('uploadUi');
+    const preview     = document.getElementById('uploadPreview');
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        preview.src = ev.target.result;
+        preview.classList.add('visible');
+        uploadUi.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    ['dragover', 'dragenter'].forEach(ev => {
+      uploadArea.addEventListener(ev, e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    });
+    ['dragleave', 'drop'].forEach(ev => {
+      uploadArea.addEventListener(ev, e => { e.preventDefault(); uploadArea.classList.remove('drag-over'); });
+    });
+    uploadArea.addEventListener('drop', e => {
+      const file = e.dataTransfer.files[0];
+      if (!file) return;
+      fileInput.files = e.dataTransfer.files;
+      fileInput.dispatchEvent(new Event('change'));
+    });
+
+    /* ---- Confetti ---- */
+    function createConfetti() {
+      const wrap  = document.getElementById('confettiWrap');
+      wrap.innerHTML = '';
+      const colors = ['#A8431F', '#C06A45', '#F6EBE4', '#ffffff', '#7E3015', '#FFD700'];
+      for (let i = 0; i < 70; i++) {
+        const el  = document.createElement('div');
+        const size = 4 + Math.random() * 9;
+        el.className = 'confetti-piece';
+        el.style.cssText = [
+          'left:'                + (Math.random() * 100) + '%',
+          'background:'          + colors[Math.floor(Math.random() * colors.length)],
+          'animation-delay:'     + (Math.random() * 1.6) + 's',
+          'animation-duration:'  + (1.4 + Math.random() * 2) + 's',
+          'width:'               + size + 'px',
+          'height:'              + size + 'px',
+          'transform: rotate('   + (Math.random() * 360) + 'deg)',
+        ].join(';');
+        wrap.appendChild(el);
+      }
+    }
+  })();
+  </script>
+</body>
+</html>

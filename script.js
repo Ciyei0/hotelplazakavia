@@ -56,12 +56,156 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* -------- Botones "Reservar" de cada habitación -> preselecciona tipo -------- */
+  /* -------- Room Modal -------- */
+  const ROOM_DATA = {
+    Sencilla: {
+      title: "Habitación Sencilla",
+      price: 1800,
+      capacity: "1 huésped",
+      badge: "",
+      tag: "1 huésped",
+      desc: "Ideal para el viajero individual. Cama cómoda, baño privado y todo lo esencial para una estancia tranquila.",
+      feats: ["1 cama", "Baño privado", "Aire acondicionado", "WiFi gratis", "TV por cable"],
+      img: "img/sencilla.jpg",
+    },
+    Doble: {
+      title: "Habitación Doble",
+      price: 2500,
+      capacity: "Hasta 2 huéspedes",
+      badge: "Más popular",
+      tag: "2 huéspedes",
+      desc: "Perfecta para parejas o dos viajeros. Dos camas, amplitud y comodidad para disfrutar tu estadía.",
+      feats: ["2 camas", "Baño privado", "Aire acondicionado", "WiFi gratis", "TV por cable"],
+      img: "img/doble.jpg",
+    },
+    Triple: {
+      title: "Habitación Triple",
+      price: 3200,
+      capacity: "Hasta 3 huéspedes",
+      badge: "",
+      tag: "3 huéspedes",
+      desc: "Espaciosa y versátil, pensada para familias o grupos de amigos que viajan juntos.",
+      feats: ["3 camas", "Baño privado", "Aire acondicionado", "WiFi gratis", "TV por cable"],
+      img: "img/triple.jpg",
+    },
+  };
+
+  const roomModal  = document.getElementById("roomModal");
+  const rmClose    = document.getElementById("rmClose");
+  const rmImg      = document.getElementById("rmImg");
+  const rmTitle    = document.getElementById("rmTitle");
+  const rmCapacity = document.getElementById("rmCapacity");
+  const rmBadge    = document.getElementById("rmBadge");
+  const rmTag      = document.getElementById("rmTag");
+  const rmDesc     = document.getElementById("rmDesc");
+  const rmFeats    = document.getElementById("rmFeats");
+  const rmCalc     = document.getElementById("rmCalc");
+  const rmReserve  = document.getElementById("rmReserve");
+  const rmCheckin  = document.getElementById("rmCheckin");
+  const rmCheckout = document.getElementById("rmCheckout");
+  let   rmCurrentKey = "";
+
+  function fmtPrice(n) {
+    return "RD$ " + n.toLocaleString("es-DO");
+  }
+
+  function updateRoomCalc() {
+    const room = ROOM_DATA[rmCurrentKey];
+    if (!room || !rmCheckin.value || !rmCheckout.value) {
+      rmCalc.innerHTML = "<span>Selecciona las fechas para ver el total.</span>";
+      return;
+    }
+    const d1 = new Date(rmCheckin.value);
+    const d2 = new Date(rmCheckout.value);
+    const nights = Math.round((d2 - d1) / 86400000);
+    if (nights <= 0) {
+      rmCalc.innerHTML = "<span>La salida debe ser después de la llegada.</span>";
+      return;
+    }
+    const total = nights * room.price;
+    rmCalc.innerHTML =
+      '<span class="calc-nights">' + nights + " noche" + (nights > 1 ? "s" : "") +
+      " × " + fmtPrice(room.price) + " / noche</span>" +
+      "<strong>" + fmtPrice(total) + "</strong>";
+  }
+
+  function openRoomModal(key) {
+    const room = ROOM_DATA[key];
+    if (!room || !roomModal) return;
+    rmCurrentKey = key;
+
+    rmImg.src          = room.img;
+    rmImg.alt          = room.title;
+    rmTitle.textContent    = room.title;
+    rmCapacity.textContent = room.capacity;
+    rmBadge.textContent    = room.badge;
+    rmTag.textContent      = room.tag;
+    rmDesc.textContent     = room.desc;
+    rmFeats.innerHTML = room.feats.map((f) => "<li>" + f + "</li>").join("");
+
+    const today = new Date().toISOString().split("T")[0];
+    rmCheckin.min  = today;
+    rmCheckout.min = today;
+    rmCheckin.value  = "";
+    rmCheckout.value = "";
+    rmCalc.innerHTML = "<span>Selecciona las fechas para ver el total.</span>";
+
+    roomModal.classList.add("open");
+    roomModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    rmClose.focus();
+  }
+
+  function closeRoomModal() {
+    if (!roomModal) return;
+    roomModal.classList.remove("open");
+    roomModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  if (roomModal) {
+    rmClose.addEventListener("click", closeRoomModal);
+    roomModal.addEventListener("click", (e) => { if (e.target === roomModal) closeRoomModal(); });
+    rmCheckin.addEventListener("change", () => {
+      rmCheckout.min = rmCheckin.value || new Date().toISOString().split("T")[0];
+      if (rmCheckout.value && rmCheckout.value <= rmCheckin.value) rmCheckout.value = "";
+      updateRoomCalc();
+    });
+    rmCheckout.addEventListener("change", updateRoomCalc);
+
+    rmReserve.addEventListener("click", () => {
+      const room = ROOM_DATA[rmCurrentKey];
+      if (!room) return;
+      const parts = [
+        "¡Hola " + HOTEL + "! Quiero hacer una reserva.",
+        "",
+        "• Habitación: " + room.title,
+        rmCheckin.value  ? "• Llegada: "  + rmCheckin.value  : null,
+        rmCheckout.value ? "• Salida: "   + rmCheckout.value : null,
+      ].filter(Boolean);
+      window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(parts.join("\n")), "_blank", "noopener");
+    });
+  }
+
+  /* Click & keyboard on room cards */
+  document.querySelectorAll("[data-open-room]").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      openRoomModal(card.getAttribute("data-open-room"));
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openRoomModal(card.getAttribute("data-open-room"));
+      }
+    });
+  });
+
+  /* Legacy [data-room] reserve buttons -> open modal */
   document.querySelectorAll("[data-room]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const tipo = btn.getAttribute("data-room");
-      const sel = document.getElementById("tipo");
-      if (sel) sel.value = tipo;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openRoomModal(btn.getAttribute("data-room"));
     });
   });
 
@@ -146,6 +290,10 @@
   lbNext.addEventListener("click", () => show(current + 1));
   lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
   document.addEventListener("keydown", (e) => {
+    if (roomModal && roomModal.classList.contains("open")) {
+      if (e.key === "Escape") closeRoomModal();
+      return;
+    }
     if (!lb.classList.contains("open")) return;
     if (e.key === "Escape") closeLb();
     if (e.key === "ArrowLeft") show(current - 1);
