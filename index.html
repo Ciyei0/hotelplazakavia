@@ -512,5 +512,19 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- === MARCA DE AGUA — remover cuando se reciba el pago === -->
+  <div id="wm" aria-hidden="true"></div>
+  <style>
+    #wm {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='220'%3E%3Ctext x='190' y='120' text-anchor='middle' fill='rgba(100%2C20%2C5%2C0.13)' font-family='Arial%2Csans-serif' font-size='19' font-weight='900' letter-spacing='2' transform='rotate(-35%2C190%2C110)'%3EDEMO %E2%80%A2 PENDIENTE DE PAGO%3C%2Ftext%3E%3C%2Fsvg%3E");
+      background-repeat: repeat;
+    }
+  </style>
+  <!-- ========================================================= -->
 </body>
 </html>
