@@ -264,15 +264,21 @@ strong { color: var(--ink); font-weight: 600; }
   padding: 7rem 1.25rem 4rem;
   overflow: hidden;
 }
-.hero__bg {
+.hero__video {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.06);
-  animation: heroZoom 14s var(--ease) forwards;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-@keyframes heroZoom { to { transform: scale(1); } }
+
+/* Fade-out hero text after a few seconds */
+.hero--gone {
+  opacity: 0 !important;
+  transform: translateY(-16px) !important;
+  transition: opacity 1.4s ease-out !important, transform 1.4s ease-out !important;
+  pointer-events: none !important;
+}
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -327,6 +333,66 @@ strong { color: var(--ink); font-weight: 600; }
   0% { opacity: 0; transform: translateY(0); }
   40% { opacity: 1; }
   80%,100% { opacity: 0; transform: translateY(14px); }
+}
+
+/* ============================================================
+   CERCANO — atracciones cercanas
+   ============================================================ */
+.nearby__grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(3rem, 7vw, 5.5rem);
+}
+.nearby__item {
+  display: flex;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+}
+.nearby__item--flip { flex-direction: row-reverse; }
+
+.nearby__media {
+  position: relative;
+  flex: 0 0 48%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 4 / 3;
+}
+.nearby__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.nearby__item:hover .nearby__media img { transform: scale(1.05); }
+
+.nearby__dist {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--rust);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .44em 1em;
+  border-radius: 100px;
+}
+.nearby__text { flex: 1; }
+.nearby__title {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: .6rem 0 1rem;
+}
+.nearby__text p:not(.eyebrow) { color: var(--ink-soft); line-height: 1.75; }
+
+@media (max-width: 760px) {
+  .nearby__item,
+  .nearby__item--flip { flex-direction: column; gap: 1.5rem; }
+  .nearby__media { flex: none; width: 100%; aspect-ratio: 16/9; }
 }
 
 /* ============================================================

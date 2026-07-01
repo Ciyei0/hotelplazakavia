@@ -5,8 +5,15 @@
   "use strict";
 
   /* -------- CONFIG (edita estos datos reales) -------- */
-  const WHATSAPP = "18090000000";              // número con código de país, sin signos
+  const WHATSAPP = "18494984808";              // número con código de país, sin signos
   const HOTEL    = "Hotel Plaza Kávia";
+
+  /* -------- Hero: fade-out logo/título después de 4s -------- */
+  setTimeout(() => {
+    document.querySelectorAll(".hero__hide").forEach((el) => {
+      el.classList.add("hero--gone");
+    });
+  }, 4000);
 
   /* -------- Navbar: sólida al hacer scroll -------- */
   const nav = document.getElementById("nav");
