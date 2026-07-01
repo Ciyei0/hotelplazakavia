@@ -108,6 +108,10 @@ strong { color: var(--ink); font-weight: 600; }
   box-shadow: 0 18px 50px rgba(0,0,0,.28);
   margin-bottom: 1.6rem;
 }
+.logo-badge--clear {
+  background: transparent;
+  box-shadow: none;
+}
 .logo-badge--float {
   position: absolute;
   width: 92px; height: 92px;
